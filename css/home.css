@@ -1,0 +1,224 @@
+/* CSS Document for the Home page */
+
+/* This has to be at the top of the file */
+/* https://fonts.google.com/?query=open */
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
+/* margin specifies the distance from the charaters to the edges of the page */
+body {font-family: 'Langar', cursive; font-size: 16px; font-weight: 300; color: #555; margin: 0; padding: 0;}
+
+#page {max-width: 100%; margin: 0 auto; position: relative;} /* limit the size the page can extend to */
+
+/* Text */
+/* for margin: TOP, RIGHT, BOTTOM, LEFT; 1em = 1 * font-size (from body section) */
+/* "    "    : TOP&BOTTOM, LEFT&RIGHT */
+h1 {margin: 0 0 1em 0; font-size: 2.8em; font-weight: 700;}
+h2 {margin: 0 0 .7em 0; font-size: 2.2em; font-weight: 700; line-height: 1.1em;}
+h3 {margin: 0 0 .5em 0; font-size: 1.3em; font-weight: 700;}
+h4 {margin: 0 0 1.5em 0; font-size: 1em; font-weight: 700;}
+
+p {margin: 0 0 1em 0; font-size: 1.1em; line-height: 1.7em;}
+a {color: #1c0949;}
+a:visited {color: #490909;}
+
+/* General setup for all buttons */
+a.btn {
+    font-size: 1.5em; text-decoration: none; color: #000;
+    border: 1px solid #000; padding: 10px 10px;  /*padding: TOP/BOTTOM RIGHT/LEFT */
+    transition: background-color .5s; /* transition: TRANSITION, TIME */
+}
+/* hover is a pseudo class in css */
+a.btn:hover {background-color: rgba(0,0,0,.3);} /* red, green, blue, 70% transparent */
+
+/* ---------------------------- Individual sections below --------------------------------------------------------------- */
+/* ------------------------------ Header ------------------------------------------------------------ */
+/* Header - only target at the ones inside the header tag */
+/* for background: COLOR, IMAGE, REPEAT, POSITIONING */
+header {height: 700px; position: relative;}
+
+header::before {
+    content: ""; 
+    background-image: url(../images/home/lake.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.7;
+}
+
+header a.logo {
+    z-index: 1; /* rearranging stacking order using z-index, by default is 0 */
+    position: relative; display: block; 
+    width: 100px; height: 100px; 
+    background: url(../images/home/sl.svg) no-repeat 50% 50%; /* 0 0 are the x and y of origin, upper left corner */
+    background-size: contain; /* proportionally scale the image within the width and height */
+    top: 0; left: 47%; /* 15px from bottom of the header above, 20px from left hand side of the page */
+}
+
+header a.logo span {display: none;} /* hiding the words */
+
+/* width is the percentage of header element */
+header div.hero {position: absolute; width: 40%; top: 50%; left: 10%;}
+
+header div.right {position: absolute; width: 10%; top: 50%; left: 50%; height: 50%;}
+
+header div.line {position: absolute; width: 40%; top: 50%; left: 60%; text-align: center; height: 50%;}
+
+/* Title on front page, line-height is the spacing */
+header div.hero h1 {line-height: 1.3em; margin: 0 0 30px 0; color: #000000;}
+
+header div.hero p {color: #000000; font-size: 1.5em;}
+
+header div.right a.btn {display: block; position: relative; top: 25%; text-align: center;} 
+
+header div.line hr {
+    position: relative;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1em 0;
+    padding: 0;
+    top: 29%;
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+
+/* Section -- All */
+section {padding: 100px 30px 100px 30px;}
+
+/* create a sudo element to fill up the section that main cannot extend to. 
+'after' means add this element after all other elements. */
+section::after{content:''; display: block; clear: both;} /* 'both' makes this invisible block tall enough to clear all 
+elements that has a float property */
+
+
+/* Section -- Main */
+#section.main {margin-top: 10px; margin-bottom: 10px; padding: 0px;}
+section.main aside{width: 33%; float: left; text-align: center;} /* three section across evenly */
+
+/* the reason we have a content inside aside is bec we can add padding but not change the 33% of each aside */
+section.main .content{
+    margin: 15px; background: no-repeat center top; 
+    background-size: 75px 75px; padding-top: 85px; /* note that the padding, 
+    which is inside the box can increase the overall size of the element */
+}
+
+section.main aside h3 a{color: #000; text-decoration: none; font-size: 1.3em;}
+section.main aside h3 a:hover{text-decoration: underline;}
+
+ /* svg are mathematical images that can be drawn in any size in a webpage */
+section.main aside .content.trending{background-image: url(../images/home/work.svg);}
+section.main aside .content.school{background-image: url(../images/home/math.svg);}
+section.main aside .content.hobby{background-image: url(../images/home/tea.svg);}
+
+
+/* ----------------------------------------------------------------------------------------------- */
+/* Section -- About Me */
+section.about.me{
+    background-size: cover; 
+    background-attachment: fixed;
+    background-image: url(../images/home/backimg.png); 
+    padding-top: 30px; padding-bottom: 30px; 
+    color: #000;
+}
+
+section.about.me article{
+    padding: 0 20px 0px 515px; 
+    background: url(../images/home/profile_pic.JPG) no-repeat 0 5px; 
+    min-height: 400px; /* to make sure article always has the min height 
+    for the image not to get cut off if text are not long enough. but it can always be taller */
+}
+
+section.about.me p{padding: 0px 0px 15px 0px}
+
+section.about.me a.btn{font-size: 1.2em; top: 25px;}
+
+/* ----------------------------------------------------------------------------------------------- */
+/* Section -- Special Feature */
+
+section.special{background-color: #fff; position: relative;}
+
+section.special .major{
+    margin-top: 10px; margin-bottom: 10px; padding: 0px;
+    text-align: center;
+}
+
+section.special .major hr {
+    width: 10%;
+}
+
+section.special aside{width: 33%; float: left; margin-right: 10px; text-align: center;}
+section.special aside .content{padding: 30px 30px 20px 0;}
+/* target two images with tags in HTML */
+section.special aside .content .center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10% 0 10% 0;
+    width: 70%;
+}
+
+section.special aside .content h4{margin-bottom: 0;}
+section.special aside .content p{margin-bottom: .5em;}
+section.special aside .content a{display: inline-block; color: #2666f0; font-weight: 700;}
+
+section.special blockquote{
+    margin: 0;
+    width: 30%;
+    color: #000;
+    position: relative; 
+    float: left;
+    bottom: 0; right: 4%; /* the white will be at the bottom of the div */
+}
+
+section.special blockquote p{margin: 80px 30px 20px 50px;} /* this will influence both paragraphs */
+section.special blockquote p.quote{font-style: italic; font-size: 1.1em; line-height: 1.7em;}
+section.special blockquote p.credit{
+    color: #777;
+    font-size: .9em; margin-top: 0;
+    padding-left: 50%; line-height: 1.3em;
+    position: relative;
+}
+
+/* use psudo elements here so that we don't have to change HTML*/
+section.special blockquote::before{ /* 'before' means it needs to be placed before any other elements in the section. */
+    content:'\201c'; /* need to use unicode for that character */
+    color: #d2bd65;
+    position: absolute;
+    top: 50px; left: 8px;
+    font-size: 5em;
+    font-family: serif;
+}
+
+section.special blockquote p.quote::after{content: '\201d'; font-family: serif;}
+
+section.special blockquote p.credit::before{content: '\2014\2014'; position: absolute; top: -1px; left: 55%;}
+
+/* ----------------------------------------------------------------------------------------------- */
+/* Navigation */
+
+nav{ /* things that appear later in the HTML file will appear on the top */
+    background-color: rgba(0,0,0,.6);
+    position: absolute; /* by using absolute, it will only be as wide as the element inside */
+    top: 0px; left: 0px; /* position it at the top of the page */
+    padding: 7% 0 0 0;
+    width: 100%;
+}
+
+
+/* Footer */
+footer{font-size: .8em; margin: 40px; color: #777;}
+footer .content{display:block;}
+footer a{margin-left: 0; color: #777;}
+footer a:visited{color: #777;}
+footer a:hover{color: #000;}
+
+
+
+
+
+

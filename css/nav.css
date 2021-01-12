@@ -1,0 +1,54 @@
+nav::after{content: ''; display: block; clear: both;}
+
+nav ul{list-style: none; margin: 0; padding: 0;} /* this will remove any placement and indentation */
+
+/* this makes sure if you go into sub list, parent will still be in hover state */
+nav ul li:hover{background-color: #2b0306;}
+nav ul li:hover > ul {display: block;} /* it will overwrite the display:none */
+
+nav ul li a{
+    display: inline-block;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    width: 125px;
+    position: relative;
+}
+
+nav ul li a:visited{color: #fff;}
+
+nav ul li a:hover{background-color: #600911;}
+
+nav ul ul{position: absolute; top: 100%; background-color: #2b0306; display: none;} /* hid the sublinks */
+
+nav ul ul li{position: relative;}
+
+nav ul ul ul{left: 100%; top: 0px;}
+
+/* Top level */
+/* this select the immediate child ul under nav, so the top level of the list, not anything under that */
+nav > ul {padding-left: 200px;}
+nav > ul > li {float: left;}
+nav > ul > li > a{width: auto; padding: 10px 20px 15px 20px;}
+
+/* looking for all element tht has this rule */
+nav a[aria-haspopup ="true"]::after{
+    content: '';
+    display: block;
+    width: 0px; height: 0px;
+    position: absolute;
+    top: 16px;  right: 15px;
+    /* this is trying to use the overlapping to create a right arrow */
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #fff;
+}
+
+/* creating down pointing arrow */
+nav > ul > li > a[aria-haspopup ="true"]::after{
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+    left: 20px; right: auto;
+    bottom: 6px; top: auto;
+}
